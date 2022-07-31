@@ -1,0 +1,17 @@
+total 176
+drwxr-xr-x 5 root root  4096 Jul 27 18:46 .
+drwxr-xr-x 1 root root  4096 Jul 27 16:41 ..
+-rw-r--r-- 1 root root  1958 Jul 26 17:31 create_tables.py
+drwxr-xr-x 5 root root  4096 Apr  3  2019 data
+-rw-r--r-- 1 root root 60645 Jul 27 04:57 etl.ipynb
+-rw-r--r-- 1 root root  3311 Jul 27 05:15 etl.py
+drwxr-xr-x 2 root root  4096 Jul 27 01:21 .ipynb_checkpoints
+-rw-r--r-- 1 root root     0 Jul 27 18:46 ls.txt
+drwxr-xr-x 2 root root  4096 Jul 27 03:28 __pycache__
+-rw-r--r-- 1 root root  3374 Jul 27 18:36 README.md
+-rw-r--r-- 1 root root 22773 Jul 27 17:25 sparkify_erd.png
+-rw-r--r-- 1 root root  2016 Jul 26 11:11 sql_queries-Copy1.py
+-rw-r--r-- 1 root root  1125 Jul 26 09:07 sql_queries-orignal.py
+-rw-r--r-- 1 root root  4142 Jul 27 03:28 sql_queries.py
+-rw-r--r-- 1 root root 36259 Jul 27 05:17 test.ipynb
+-rw-r--r-- 1 root root    20 Feb 22 09:48 .workspace-config.json
