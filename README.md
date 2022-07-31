@@ -14,7 +14,7 @@ For Python ETL pipeline, this is the way transfer data from two directories of J
 These guides included database schema model, project files, run Python script, JSON song and log file locations and some of example quieries for song play analytic.
 
 ### Database schema
-![](sparkify_erd.png?raw=true)
+![alt text](https://github.com/doanvanthanhfpt/DataModeling_with_postgresql/blob/main/sparkify_erd.png)
 
 ### Project files
 Project includes 6 files
