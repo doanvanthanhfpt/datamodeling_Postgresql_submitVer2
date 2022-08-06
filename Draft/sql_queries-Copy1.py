@@ -15,7 +15,7 @@ songplay_table_create = ("""
         songplays ( 
           songplay_id SERIAL PRIMARY KEY, 
           start_time TIMESTAMP NOT NULL, 
-          user_id INT NOT NULL, 
+          user_id VARCHAR NOT NULL, 
           level VARCHAR, 
           song_id VARCHAR, 
           artist_id VARCHAR, 
@@ -32,7 +32,7 @@ songplay_table_create = ("""
 user_table_create = ("""
     CREATE TABLE IF NOT EXISTS 
         users (
-          user_id INT PRIMARY KEY,
+          user_id VARCHAR PRIMARY KEY,
           first_name VARCHAR,
           last_name VARCHAR,
           gender VARCHAR,
@@ -47,7 +47,7 @@ song_table_create = ("""
           title VARCHAR NOT NULL,
           artist_id VARCHAR, 
           year INT,
-          duration FLOAT NOT NULL);
+          duration INT NOT NULL);
           """)
 
 # ARTISTS artist_id, name, location, latitude, longitude
@@ -80,15 +80,16 @@ time_table_create = ("""
 songplay_table_insert = ("""
                          INSERT INTO 
                              songplays (
+                                 songplay_id,
                                  start_time, 
-                                 user_id, 
                                  level, 
+                                 user_id, 
                                  song_id, 
                                  artist_id, 
                                  session_id, 
                                  location, 
                                  user_agent) 
-                         VALUES(%s,%s,%s,%s,%s,%s,%s,%s)
+                         VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)
                          ON CONFLICT DO NOTHING;
                          """)
 

@@ -6,9 +6,10 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
-    """Description of the process_song_file
+    """
+    Description: this function to get the database cursor that using for extract data from filepath/song_file. 
 
-    Parameters:
+    Arguments:
     cur: Get database cursor object used the cursor() method. This read-only attribute provides the Postgresql database connection used by the Cursor object.
     filepath: Provide the path to get a list of all song JSON files (this project specified data/song_data) to get songs in this list, read the song files and view the song data.
 
@@ -17,7 +18,7 @@ def process_song_file(cur, filepath):
 
    """
     # open song file
-        df = pd.read_json(filepath,lines=True)
+    df = pd.read_json(filepath,lines=True)
 
     # insert song record
     song_data = df[['song_id', 'title', 'artist_id', 'year', 'duration']].values[0].tolist()
@@ -29,9 +30,10 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
-    """Description of the process_log_file
+    """
+    Description: this function to get the database cursor that using for extract data from filepath/log_file.
 
-    Parameters:
+    Arguments:
     cur: Get database cursor object used the cursor() method. This read-only attribute provides the Postgresql database Connection used by the Cursor object.
     filepath: Provide the path to get a list of all JSON log files (this project specified data/log_data) to get a list of all log JSON files, read the song files and view the log data.
 
@@ -87,25 +89,31 @@ def process_log_file(cur, filepath):
         else:
             songid, artistid = None, None
 
+        """ original part
         # insert songplay record
         songplay_data = [row.userId ,pd.to_datetime(row.ts, unit='ms'), row.userId, row.level, songid, artistid, row.sessionId , row.location, row.userAgent]
+        cur.execute(songplay_table_insert, songplay_data)
+        """
+        # insert songplay record
+        songplay_data = [pd.to_datetime(row.ts, unit='ms'), row.userId, row.level, songid, artistid, row.sessionId , row.location, row.userAgent]
         cur.execute(songplay_table_insert, songplay_data)
 
 
 def process_data(cur, conn, filepath, func):
-    """Description of the process_data
-    Connects JSON file and extracts informations of time, user and songplays table.
-    
-    Parameters:
-    cur: to get database cursor object.
-    conn: to make a database connection.
-    filepath: to provide the path to get a list of all JSON files (both of song_files and log_files).
-    func: to provide the function to handle data
+    """
+    Description: This function is responsible for listing the files in a directory,
+    and then executing the ingest process for each file according to the function
+    that performs the transformation to save it to the database.
+
+    Arguments:
+        cur: to get database cursor object.
+        conn: to make a database connection.
+        filepath: to provide the path to get a list of all JSON files (both of song_files and log_files).
+        func: to provide the function to handle data
 
     Returns:
-    Text:Returning time, user, songplays.
-
-   """
+        None
+    """
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
